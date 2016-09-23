@@ -9,7 +9,7 @@ module.exports = function(app) {
 		res.json(friends);
 	});
 
-	app.post('api/friends', function(req, res){
+	app.post('/api/friends', function(req, res){
 		var bestMatch = {
 			name: "",
 			photo: "",
@@ -22,10 +22,10 @@ module.exports = function(app) {
 		var totalDifference = 0;
 
 		//loop through scores of survery
-		for (var i = 0; i < friendsData.length-1; i++){
+		for (var i = 0; i < friends.length; i++){
 			console.log(friends[i].name);
 			totalDifference = 0;
-
+			// loop throught to calculate difference
 			for ( var j =0; j < 10; j++) {
 				totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));
 					if (totalDifference <= bestMatch.friendDifference){
